@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MoviesListApi.Data;
 using MoviesListApi.Entities;
 
@@ -17,7 +18,7 @@ namespace MoviesListApi.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<User>> GetUsers()
         {
-            var users = _context.Users.ToList();
+            var users = _context.Users.Include(u => u.FavoritesMovies).Include(u => u.Preferences).ThenInclude(p => p.FavoriteCategories).ToList();
 
             return users;
         }

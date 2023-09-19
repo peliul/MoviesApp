@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MoviesListApi.Data;
+using MoviesListApi.DTO;
 using MoviesListApi.Entities;
+using MoviesListApi.Interfaces;
 
 namespace MoviesListApi.Controllers
 {
@@ -9,26 +12,35 @@ namespace MoviesListApi.Controllers
     [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
-        private readonly DataContext _context;
-        public UsersController(DataContext context)
+        private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
+        public UsersController(IUserRepository userRepository, IMapper mapper)
         {
-            _context = context;
+            _userRepository = userRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<User>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
         {
-            var users = _context.Users.Include(u => u.FavoritesMovies).Include(u => u.Preferences).ThenInclude(p => p.FavoriteCategories).ToList();
+            var users = await _userRepository.GetUsersAsync();
 
-            return users;
+            return Ok(users);
         }
 
         [HttpGet("{id}")]
-        public ActionResult<User> GetUser(int id) 
+        public async Task<ActionResult<UserDto>> GetUser(int id) 
         {
-            var user = _context.Users.Find(id);
+            if (!await _userRepository.UserExists(id))
+            {
+                return BadRequest("User doesn't exist!");
+            }
 
-            return user;
+            var user = await _userRepository.GetUserAsync(id);
+
+            return Ok(user);
         }
+
+       
     }
 }

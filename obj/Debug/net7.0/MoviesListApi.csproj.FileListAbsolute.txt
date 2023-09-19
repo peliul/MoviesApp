@@ -61,3 +61,6 @@ C:\Projects\ASP_api\MoviesListApi\MoviesListApi\bin\Debug\net7.0\runtimes\win-ar
 C:\Projects\ASP_api\MoviesListApi\MoviesListApi\bin\Debug\net7.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Projects\ASP_api\MoviesListApi\MoviesListApi\bin\Debug\net7.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Projects\ASP_api\MoviesListApi\MoviesListApi\bin\Debug\net7.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Projects\ASP_api\MoviesListApi\MoviesListApi\bin\Debug\net7.0\AutoMapper.dll
+C:\Projects\ASP_api\MoviesListApi\MoviesListApi\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Projects\ASP_api\MoviesListApi\MoviesListApi\bin\Debug\net7.0\Newtonsoft.Json.dll

@@ -1,4 +1,4 @@
-﻿namespace MoviesListApi.Entities.Movie
+﻿namespace MoviesListApi.Entities
 {
     public class Tag
     {

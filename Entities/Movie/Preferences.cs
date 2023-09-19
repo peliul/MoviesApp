@@ -1,6 +1,5 @@
-﻿using MoviesListApi.Entities.User;
-
-namespace MoviesListApi.Entities.Movie
+﻿
+namespace MoviesListApi.Entities
 {
     public class Preferences
     {
@@ -8,6 +7,6 @@ namespace MoviesListApi.Entities.Movie
         public int UserId { get; set; }
         public ICollection<Category> FavoriteCategories { get; set; }
         public string Theme { get; set; }
-        public User.User User { get; set; }
+        public User User { get; set; }
     }
 }
